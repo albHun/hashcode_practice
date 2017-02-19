@@ -10,26 +10,32 @@ def check_final_points(slices):
 
 
 def output_slices(slices):
+	final_slices = ""
 	for sl in slices:
-		print(sl[0][0], sl[0][1], sl[1][0], sl[1][1], "\n")
+		final_slices += str(sl[0][0]) +" " +str(sl[0][1]) +" " + str(sl[1][0]) +" " + str(sl[1][1]) + "\n"
+	return final_slices
 
+random_limit = 1000000
+iteration_limit = 1000
 
-iteration_limit = 100000
 configuration, pizza = load_in_data("small.in")
 row = int(configuration["row"])
 column = int(configuration["column"])
+slicing_methods = list()
 
-slices = list()
-for time in range(0, iteration_limit):
-	row1 = randint(0, row-1)
-	row2 = randint(row1, row-1)
-	col1 = randint(0, column-1)
-	col2 = randint(col1, column-1)
-	if row1 == row2 and col1 == col2:
-		break
-	new_slice = ((row1, col1), (row2, col2))
-	if (not check_overlap(slices, new_slice)) and check_slice_condition(pizza, configuration, new_slice):
-		slices.append(new_slice)
+for iter in range(0, iteration_limit):
+	slices = list()
+	for time in range(0, random_limit):
+		row1 = randint(0, row-1)
+		row2 = randint(row1, row-1)
+		col1 = randint(0, column-1)
+		col2 = randint(col1, column-1)
+		if row1 == row2 and col1 == col2:
+			continue
+		new_slice = ((row1, col1), (row2, col2))
+		if (not check_overlap(slices, new_slice)) and check_slice_condition(pizza, configuration, new_slice):
+			slices.append(new_slice)
 
-output_slices(slices)
-print(check_final_points(slices))
+	slicing_methods.append((check_final_points(slices), output_slices(slices)))
+	slicing_methods.sort(reverse=True)
+	print(slicing_methods[0])
