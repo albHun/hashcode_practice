@@ -1,22 +1,23 @@
 from g1 import *
 from random import randint
+import pprint
 
 
 def check_final_points(slices):
 	count = 0
 	for sl in slices:
-		count += (sl[1][0] - sl[0][0] + 1) + (sl[1][1] - sl[0][1] + 1)
+		count += (sl[1][0] - sl[0][0] + 1) * (sl[1][1] - sl[0][1] + 1)
 	return count
 
 
 def output_slices(slices):
 	final_slices = ""
 	for sl in slices:
-		final_slices += str(sl[0][0]) +" " +str(sl[0][1]) +" " + str(sl[1][0]) +" " + str(sl[1][1]) + "\n"
+		final_slices += str(sl[0][0]) +" " +str(sl[0][1]) +" " + str(sl[1][0]) +" " + str(sl[1][1]) + '\n'
 	return final_slices
 
-random_limit = 1000000
-iteration_limit = 1000
+random_limit = 100
+iteration_limit = 100
 
 configuration, pizza = load_in_data("small.in")
 row = int(configuration["row"])
@@ -38,4 +39,4 @@ for iter in range(0, iteration_limit):
 
 	slicing_methods.append((check_final_points(slices), output_slices(slices)))
 	slicing_methods.sort(reverse=True)
-	print(slicing_methods[0])
+	pprint.pprint(slicing_methods[0])
