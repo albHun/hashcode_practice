@@ -11,11 +11,11 @@ def check_final_points(slices):
 
 def output_slices(slices):
 	for sl in slices:
-		print(sl[0][0], sl[0][1], sl[1][0], sl[1][1], "\n")
+		print(sl[0][0], sl[0][1], sl[1][0], sl[1][1])
 
 
 iteration_limit = 100000
-configuration, pizza = load_in_data("small.in")
+configuration, pizza = load_in_data("medium.in")
 row = int(configuration["row"])
 column = int(configuration["column"])
 
@@ -25,8 +25,8 @@ for time in range(0, iteration_limit):
 	row2 = randint(row1, row-1)
 	col1 = randint(0, column-1)
 	col2 = randint(col1, column-1)
-	if row1 == row2 and col1 == col2:
-		break
+	# if row1 == row2 and col1 == col2:
+	# 	break
 	new_slice = ((row1, col1), (row2, col2))
 	if (not check_overlap(slices, new_slice)) and check_slice_condition(pizza, configuration, new_slice):
 		slices.append(new_slice)
