@@ -35,6 +35,7 @@ def load_in_data(filename):
 def check_overlap(slices, new_slice):
     '''
         check for overlaps returning true if overlap exists
+        True: overlap exists
         takes arguments pizza, current slices and the new slice
         slice: tuple ( (row1, column1), (row2, column2) )
     '''
@@ -52,6 +53,7 @@ def check_overlap(slices, new_slice):
 def check_slice_condition(pizza, config, new_slice):
     '''
         check that the slice meets the minimum TM condition and the maximum size condition
+        False: condition not met
     '''
     row1 = new_slice[0][0];
     row2 = new_slice[1][0];
@@ -61,7 +63,16 @@ def check_slice_condition(pizza, config, new_slice):
         return False;
     MCount = 0;
     TCount = 0;
-
+    for i in range(row1 - 1, row2):
+        for j in range(column1 - 1, column2):
+            if pizza[i][j] == 2:
+                TCount += 1;
+            if pizza[i][j] == 1:
+                MCount += 1;
+    if MCount >= config.L and TCount >= config.L:
+        return True;
+    else:
+        return False;
 
 if __name__ == "__main__":
     print(load_in_data("small.in"));
