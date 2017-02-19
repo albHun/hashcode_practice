@@ -3,7 +3,7 @@ from random import randint
 from visualisation import plot_out_data
 import pprint
 
-input_file = "medium.in"
+input_file = "big.in"
 
 
 def check_final_points(slices):
@@ -20,8 +20,10 @@ def output_slices(slices):
 	return final_slices
 
 
-random_limit = 10000
-partitions = 7
+random_limit = 50000
+partitions = 10
+partitions_step = 3
+partitions_delta = 8
 iteration_limit = 10
 
 configuration, pizza = load_in_data(input_file)
@@ -30,7 +32,7 @@ column = int(configuration["column"])
 slicing_methods = list()
 
 # for iter in range(0, iteration_limit):
-for partitions in range(partitions-5, partitions + 5):
+for partitions in range(partitions - partitions_delta, partitions + partitions_delta, partitions_step):
 	print("Entering iteration with partitions as " + str(partitions));
 	slices = list()
 	for time in range(0, random_limit):
@@ -68,7 +70,7 @@ for partitions in range(partitions-5, partitions + 5):
 	print("Finished iteration step. Current optimal count: ")
 	print(slicing_methods[0][0])
 
-print(slicing_methods[0])
+# print(slicing_methods[0])
 with open("output.txt", "w") as text_file:
     text_file.write(slicing_methods[0][1])
 plot_out_data(input_file, "output.txt")
