@@ -59,17 +59,17 @@ def check_slice_condition(pizza, config, new_slice):
     row2 = new_slice[1][0];
     column1 = new_slice[0][1];
     column2 = new_slice[1][1];
-    if (row2 - row1 + 1) * (column2 - column1 + 1) > config.H :
+    if (row2 - row1 + 1) * (column2 - column1 + 1) > int(config["H"]) :
         return False;
     MCount = 0;
     TCount = 0;
-    for i in range(row1 - 1, row2):
-        for j in range(column1 - 1, column2):
+    for i in range(row1, row2 + 1):
+        for j in range(column1 , column2 + 1):
             if pizza[i][j] == 2:
                 TCount += 1;
             if pizza[i][j] == 1:
                 MCount += 1;
-    if MCount >= config.L and TCount >= config.L:
+    if MCount >= int(config["L"]) and TCount >= int(config["L"]):
         return True;
     else:
         return False;
