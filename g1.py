@@ -49,6 +49,10 @@ def check_overlap(slices, new_slice):
         for corner in new_slice:
             if (corner[0] >= s[0][0] and corner[0] <= s[1][0]) and (corner[1] >= s[0][1] and corner[1] <= s[1][1]):
                 return True;
+        # check the reverse
+        for corner in s:
+            if (corner[0] >= new_slice[0][0] and corner[0] <= new_slice[1][0]) and (corner[1] >= new_slice[0][1] and corner[1] <= new_slice[1][1]):
+                return True;
     return False;
 
 def check_slice_condition(pizza, config, new_slice):
