@@ -1,5 +1,12 @@
 # Hashcode
 
+## Randomised Implementation
+
+In Python3, found in g1.py
+
+Tests found in test_g1.py
+
+
 ## Practice session: Specification
 
 1. Find number of M's and T's
