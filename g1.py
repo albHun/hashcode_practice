@@ -60,20 +60,38 @@ def check_slice_condition(pizza, config, new_slice):
     row2 = new_slice[1][0];
     column1 = new_slice[0][1];
     column2 = new_slice[1][1];
-    if (row2 - row1 + 1) * (column2 - column1 + 1) > config.H :
+
+    # check that the slice matches the convention we are using: that row2 >= row1 and that column2 >= column1
+    if row2 < row1 or column2 < column1:
+        raise ValueError("Convention breached: for any slice, row2 >= row1 and column2 >= column1. This exception is raised to prevent unpredictable programme behaviour.");
         return False;
+
+    # check that the total number of cells does not exceed H
+    if (row2 - row1 + 1) * (column2 - column1 + 1) > int(config["H"]) :
+        return False;
+
+    # check that the slice contains at least L element of each
     MCount = 0;
     TCount = 0;
-    for i in range(row1 - 1, row2):
-        for j in range(column1 - 1, column2):
+    for i in range(row1, row2 + 1):
+        for j in range(column1 , column2 + 1):
             if pizza[i][j] == 2:
                 TCount += 1;
             if pizza[i][j] == 1:
                 MCount += 1;
-    if MCount >= config.L and TCount >= config.L:
-        return True;
+    if MCount >= int(config["L"]) and TCount >= int(config["L"]):
+        pass;
     else:
         return False;
+
+    mRow = config["row"];
+    mCol = config["column"];
+    # check that the slice does not exceed any boundary condition
+    if row1 < 0 or column1 < 0 or row2 < 0 or column2 < 0:
+        if row1 > mRow or row2 > mRow or column1 > mCol or column2 > mCol:
+            return False;
+
+    return True;
 
 if __name__ == "__main__":
     print(load_in_data("small.in"));
