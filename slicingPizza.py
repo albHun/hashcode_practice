@@ -1,6 +1,9 @@
 from g1 import *
 from random import randint
+from visualisation import plot_out_data
 import pprint
+
+input_file = "medium.in"
 
 
 def check_final_points(slices):
@@ -17,33 +20,48 @@ def output_slices(slices):
 	return final_slices
 
 
-random_limit = 100000
-partitions = 1
-iteration_limit = 5
+random_limit = 10000
+partitions = 7
+iteration_limit = 10
 
-configuration, pizza = load_in_data("small.in")
+configuration, pizza = load_in_data(input_file)
 row = int(configuration["row"])
 column = int(configuration["column"])
 slicing_methods = list()
 
-for iter in range(0, iteration_limit):
-	print("Entering iteration " + str(iter));
+# for iter in range(0, iteration_limit):
+for partitions in range(partitions-5, partitions + 5):
+	print("Entering iteration with partitions as " + str(partitions));
 	slices = list()
-	for part in range(0, partitions):
-		for time in range(0, random_limit):
-			# row1 = randint(row / partitions * part, row * (part + 1)/partitions - 1)
-			# row2 = randint(row1, row * (part + 1)/partitions - 1)
-			# col1 = randint(column / partitions * part, column * (part + 1)/partitions - 1)
-			# col2 = randint(col1, column * (part + 1)/partitions - 1)
-			row1 = randint(0, row-1)
-			row2 = randint(row1, row-1)
-			col1 = randint(0, column-1)
-			col2 = randint(col1, column-1)
-			if row1 == row2 and col1 == col2:
-				continue
-			new_slice = ((row1, col1), (row2, col2))
-			if (not check_overlap(slices, new_slice)) and check_slice_condition(pizza, configuration, new_slice):
-				slices.append(new_slice)
+	for time in range(0, random_limit):
+		# row1 = randint(row / partitions * part, row * (part + 1)/partitions - 1)
+		# row2 = randint(row1, row * (part + 1)/partitions - 1)
+		# col1 = randint(column / partitions * part, column * (part + 1)/partitions - 1)
+		# col2 = randint(col1, column * (part + 1)/partitions - 1)
+
+		# row1 = randint(0, row-1)
+		# row2 = randint(row1, row-1)
+		# col1 = randint(0, column-1)
+		# col2 = randint(col1, column-1)
+
+		row1 = randint(0, row - 1)
+		if row1 + partitions > row - 1:
+			temp = row - 1
+		else:
+			temp = row1 + partitions
+		row2 = randint(row1, temp)
+		col1 = randint(0, column - 1)
+		if col1 + partitions > row - 1:
+			temp = column - 1
+		else:
+			temp = col1 + partitions
+		col2 = randint(col1, temp)
+
+		if row1 == row2 and col1 == col2:
+			continue
+		new_slice = ((row1, col1), (row2, col2))
+		if (not check_overlap(slices, new_slice)) and check_slice_condition(pizza, configuration, new_slice):
+			slices.append(new_slice)
 
 	slicing_methods.append((check_final_points(slices), output_slices(slices)))
 	slicing_methods.sort(reverse=True)
