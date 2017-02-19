@@ -47,7 +47,7 @@ def check_overlap(slices, new_slice):
         # condition for overlap: any corner falls in the area of an existing slice
         # check every corner
         for corner in new_slice:
-            if corner[0] > s[0][0] and corner[0] < s[1][0] and corner[1] > s[0][1] and corner[1] < s[1][1]:
+            if (corner[0] >= s[0][0] and corner <= s[1][0]) and (corner[1] >= s[0][1] and corner <= s[1][1]):
                 return True;
     return False;
 
@@ -82,7 +82,7 @@ def check_slice_condition(pizza, config, new_slice):
     if MCount >= int(config["L"]) and TCount >= int(config["L"]):
         pass;
     else:
-        return False;
+        return False;.
 
     mRow = config["row"];
     mCol = config["column"];
