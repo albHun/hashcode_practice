@@ -101,5 +101,5 @@ if __name__ == "__main__":
     print("sample in_data:");
     print(load_in_data("example.in"));
 
-    plot_in_data("small.in");
-    # plot_out_data("example.in", "sample.out");
+    # plot_in_data("small.in");
+    plot_out_data("small.in", "sample.out");
