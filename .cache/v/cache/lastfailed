@@ -1,1 +1,3 @@
-{}
+{
+  "test_g1.py::test_check_slice_condition": true
+}

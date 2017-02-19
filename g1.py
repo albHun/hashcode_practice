@@ -61,10 +61,10 @@ def check_slice_condition(pizza, config, new_slice):
     column2 = new_slice[1][1];
 
     # check that the slice matches the convention we are using: that row2 >= row1 and that column2 >= column1
-    if row2 <= row1 or column2 <= column1:
+    if row2 < row1 or column2 < column1:
         raise ValueError("Convention breached: for any slice, row2 >= row1 and column2 >= column1. This exception is raised to prevent unpredictable programme behaviour.");
         return False;
-        
+
     # check that the total number of cells does not exceed H
     if (row2 - row1 + 1) * (column2 - column1 + 1) > int(config["H"]) :
         return False;
@@ -90,7 +90,7 @@ def check_slice_condition(pizza, config, new_slice):
         if row1 > mRow or row2 > mRow or column1 > mCol or column2 > mCol:
             return False;
 
-
+    return True;
 
 if __name__ == "__main__":
     print(load_in_data("small.in"));

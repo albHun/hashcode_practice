@@ -16,3 +16,9 @@ def test_check_slice_condition():
 	assert g1.check_slice_condition(pizza, config, new_slice) == False;
 	new_slice = ( (4,0), (5,1) );
 	assert g1.check_slice_condition(pizza, config, new_slice) == False;
+	new_slice = ( (0,0), (500,1) );
+	assert g1.check_slice_condition(pizza, config, new_slice) == False;
+
+	new_slice = ( (3,0), (2,1) );
+	with pytest.raises(ValueError):
+		g1.check_slice_condition(pizza, config, new_slice);
