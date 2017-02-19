@@ -80,7 +80,7 @@ def plot_out_data(infile, outfile):
                 'color': 'rgba(0, 0, 0, 1)',
                 'width': 2,
             },
-            'fillcolor':'rgba(0, 255, 0, 1)'
+            'fillcolor':'rgba(0, 255, 0, 0.3)'
             });
     
     layout = {
