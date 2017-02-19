@@ -20,17 +20,17 @@ def load_in_data(filename):
          T==>2 ; M==> 1
     '''
     # Array of input data
-    input_data = open(filename).readlines();
-    pizza_config = input_data[0].split();
+    pizza = open(filename).readlines();
+    pizza_config = pizza[0].split();
     config = dict(row=pizza_config[0],column=pizza_config[1],L=pizza_config[2],H=pizza_config[3]);
-    del input_data[0];
-    for i in range(len(input_data)):
+    del pizza[0];
+    for i in range(len(pizza)):
         # remove line breaks
-        input_data[i] = input_data[i].replace("\n","");
-        input_data[i] = input_data[i].replace("T","2"); #Tomato==2
-        input_data[i] = input_data[i].replace("M","1");
-        input_data[i] = [int(ch) for ch in input_data[i]];
-    return config, input_data;
+        pizza[i] = pizza[i].replace("\n","");
+        pizza[i] = pizza[i].replace("T","2"); #Tomato==2
+        pizza[i] = pizza[i].replace("M","1");
+        pizza[i] = [int(ch) for ch in pizza[i]];
+    return config, pizza;
 
 def check_overlap(slices, new_slice):
     '''
@@ -39,7 +39,8 @@ def check_overlap(slices, new_slice):
         takes arguments pizza, current slices and the new slice
         slice: tuple ( (row1, column1), (row2, column2) )
     '''
-
+    if not slices:
+        return False
     if slices[0] == None:
         return False;
     for s in slices:
