@@ -4,7 +4,7 @@ from visualisation import plot_out_data
 import pprint
 
 input_file = "big.in"
-iterationLimit = 100000000
+iterationLimit = 50000000
 reportingInterval = 100000
 partitions = 6
 # partitions_step = 2
@@ -25,7 +25,7 @@ def check_final_points(slices):
 
 
 def output_slices(slices):
-	final_slices = ""
+	final_slices = str(len(slices)) + "\n"
 	for sl in slices:
 		final_slices += str(sl[0][0]) +" " +str(sl[0][1]) +" " + str(sl[1][0]) +" " + str(sl[1][1]) + '\n'
 	return final_slices
