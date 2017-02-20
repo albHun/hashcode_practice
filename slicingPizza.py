@@ -37,7 +37,7 @@ while True:
 	print("Finished iteration block. Incrementing random_limit. Current random_limit count: " + str(random_limit));
 	random_limit += random_limit_step
 	partitions = 8;
-	slicing_methods = [];
+	# slicing_methods = [];
 
 	for partitions in range(partitions - partitions_delta, partitions + partitions_delta, partitions_step):
 		print("incrementing partition, partition = " + str(partitions))
