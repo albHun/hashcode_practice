@@ -4,7 +4,12 @@ from visualisation import plot_out_data
 import pprint
 
 input_file = "big.in"
-
+random_limit = 20000
+random_limit_step = 20000
+partitions = 7
+partitions_step = 2
+partitions_delta = 1
+iteration_limit = 5
 
 def check_final_points(slices):
 	count = 0
@@ -18,14 +23,6 @@ def output_slices(slices):
 	for sl in slices:
 		final_slices += str(sl[0][0]) +" " +str(sl[0][1]) +" " + str(sl[1][0]) +" " + str(sl[1][1]) + '\n'
 	return final_slices
-
-
-random_limit = 5000
-random_limit_step = 5000
-partitions = 7
-partitions_step = 2
-partitions_delta = 1
-iteration_limit = 5
 
 configuration, pizza = load_in_data(input_file)
 row = int(configuration["row"])
