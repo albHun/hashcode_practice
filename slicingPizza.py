@@ -6,9 +6,9 @@ import pprint
 input_file = "big.in"
 random_limit = 20000
 random_limit_step = 20000
-partitions_init = 7
+partitions_init = 10
 partitions_step = 2
-partitions_delta = 1
+partitions_delta = 4
 iteration_limit = 5
 
 def check_final_points(slices):
@@ -41,10 +41,6 @@ while True:
 		for iter in range(0, iteration_limit):
 			slices = list()
 			for time in range(0, random_limit):
-				# row1 = randint(row / partitions * part, row * (part + 1)/partitions - 1)
-				# row2 = randint(row1, row * (part + 1)/partitions - 1)
-				# col1 = randint(column / partitions * part, column * (part + 1)/partitions - 1)
-				# col2 = randint(col1, column * (part + 1)/partitions - 1)
 
 				# row1 = randint(0, row-1)
 				# row2 = randint(row1, row-1)
