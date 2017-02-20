@@ -36,6 +36,13 @@ def load_in_data(filename):
         pizza[i] = [int(ch) for ch in pizza[i]];
     return config, pizza;
 
+def update_filled_pizza(new_slice):
+    '''
+        update the filled pizza with the new slice
+    '''
+    for i in range(new_slice[0][0], new_slice[1][0] + 1):
+        for j in range(new_slice[0][1], new_slice[1][1] + 1):
+            filled_pizza[i][j] = True;
 
 def check_overlap(slices, new_slice):
     '''
@@ -49,10 +56,6 @@ def check_overlap(slices, new_slice):
         return False
     if slices[0] == None:
         return False;
-    for sl in slices:
-        for i in range(sl[0][0], sl[1][0] + 1):
-            for j in range(sl[0][1], sl[1][1] + 1):
-                filled_pizza[i][j] = True;
 
     for i in range(new_slice[0][0], new_slice[1][0] + 1):
         for j in range(new_slice[0][1], new_slice[1][1] + 1):

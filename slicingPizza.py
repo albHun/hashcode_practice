@@ -23,8 +23,8 @@ def output_slices(slices):
 random_limit = 5000
 random_limit_step = 5000
 partitions = 7
-partitions_step = 1
-partitions_delta = 3
+partitions_step = 2
+partitions_delta = 1
 iteration_limit = 5
 
 configuration, pizza = load_in_data(input_file)
@@ -71,6 +71,7 @@ while True:
 					continue
 				new_slice = ((row1, col1), (row2, col2))
 				if (not check_overlap(slices, new_slice)) and check_slice_condition(pizza, configuration, new_slice):
+					update_filled_pizza(new_slice);
 					slices.append(new_slice)
 
 			slicing_methods.append((check_final_points(slices), output_slices(slices)))
