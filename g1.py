@@ -1,5 +1,5 @@
 '''
-    Greedy implementation 1
+    Random Pick implementation 1
     Global data structure:
         slice: tuple ( (row1, column1), (row2, column2) )
         config: {
