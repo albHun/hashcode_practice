@@ -5,7 +5,7 @@ import pprint
 
 input_file = "big.in"
 iterationLimit = 50000000
-reportingInterval = 100000
+reportingInterval = 500000
 partitions = 6
 # partitions_step = 2
 # partitions_delta = 1
@@ -33,11 +33,9 @@ def output_slices(slices):
 def status_update(slices, iterationCount): 
 	slicing_methods.append((check_final_points(slices), output_slices(slices)))
 	slicing_methods.sort(reverse=True)
-	print("Status Reporting. Current optimal count: ")
-	print(slicing_methods[0][0])
-	print("Current iterationCount: ")
-	print(iterationCount)
-	print("saving optimal output data")
+	print("Status Reporting. Current optimal count: " + str(slicing_methods[0][0]))
+	print("Current iterationCount: " + str(iterationCount))
+	# print("saving optimal output data")
 	with open("output.txt", "w") as text_file:
 		#save optimal solution at the end of every partition change
 	    text_file.write(slicing_methods[0][1])
