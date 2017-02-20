@@ -78,7 +78,7 @@ def plot_out_data(infile, outfile):
             'x1':int(pizza_slice[1][1]) + 0.5,
             'line': {
                 'color': 'rgba(0, 0, 0, 1)',
-                'width': 5,
+                'width': 2,
             },
             'fillcolor':'rgba(0, 255, 0, 0.3)'
             });
@@ -95,11 +95,11 @@ def plot_out_data(infile, outfile):
 
 if __name__ == "__main__":
     '''main'''
-    print("sample out_data:");
-    print(load_out_data("sample.out"));
+    # print("sample out_data:");
+    # print(load_out_data("sample.out"));
 
-    print("sample in_data:");
-    print(load_in_data("example.in"));
+    # print("sample in_data:");
+    # print(load_in_data("example.in"));
 
     # plot_in_data("small.in");
-    plot_out_data("small.in", "sample.out");
+    plot_out_data("big.in", "output.txt");
