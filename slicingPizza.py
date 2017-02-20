@@ -22,9 +22,9 @@ def output_slices(slices):
 
 random_limit = 5000
 random_limit_step = 5000
-partitions = 8
+partitions = 7
 partitions_step = 1
-partitions_delta = 3
+partitions_delta = 2
 iteration_limit = 10
 
 configuration, pizza = load_in_data(input_file)
@@ -36,6 +36,7 @@ while True:
 	# reset large variables and increment random_limit
 	print("Finished iteration block. Incrementing random_limit. Current random_limit count: " + str(random_limit));
 	random_limit += random_limit_step
+	partitions = 8;
 	slicing_methods = [];
 
 	for partitions in range(partitions - partitions_delta, partitions + partitions_delta, partitions_step):
