@@ -4,7 +4,7 @@ from visualisation import plot_out_data
 import pprint
 
 input_file = "big.in"
-iterationLimit = 50000000
+iterationLimit = 500000000
 reportingInterval = 500000
 partitions = 6
 # partitions_step = 2
