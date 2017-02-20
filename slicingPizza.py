@@ -6,7 +6,7 @@ import pprint
 input_file = "big.in"
 random_limit = 20000
 random_limit_step = 20000
-partitions = 7
+partitions_init = 7
 partitions_step = 2
 partitions_delta = 1
 iteration_limit = 5
@@ -36,7 +36,7 @@ while True:
 	partitions = 8;
 	del slicing_methods[1:-1];
 
-	for partitions in range(partitions - partitions_delta, partitions + partitions_delta, partitions_step):
+	for partitions in range(partitions_init - partitions_delta, partitions_init + partitions_delta, partitions_step):
 		print("incrementing partition, partition = " + str(partitions))
 		for iter in range(0, iteration_limit):
 			slices = list()
