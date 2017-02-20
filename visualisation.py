@@ -102,4 +102,4 @@ if __name__ == "__main__":
     # print(load_in_data("example.in"));
 
     # plot_in_data("small.in");
-    plot_out_data("medium.in", "output.txt");
+    plot_out_data("big.in", "output.txt");

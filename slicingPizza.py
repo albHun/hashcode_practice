@@ -4,12 +4,12 @@ from visualisation import plot_out_data
 import pprint
 
 input_file = "big.in"
-random_limit = 20000
-random_limit_step = 20000
-partitions_init = 10
+random_limit = 100000
+random_limit_step = 50000
+partitions_init = 7
 partitions_step = 2
-partitions_delta = 4
-iteration_limit = 5
+partitions_delta = 1
+iteration_limit = 10
 
 def check_final_points(slices):
 	count = 0
@@ -37,15 +37,10 @@ while True:
 	del slicing_methods[1:-1];
 
 	for partitions in range(partitions_init - partitions_delta, partitions_init + partitions_delta, partitions_step):
-		print("incrementing partition, partition = " + str(partitions))
+		# print("incrementing partition, partition = " + str(partitions))
 		for iter in range(0, iteration_limit):
 			slices = list()
 			for time in range(0, random_limit):
-
-				# row1 = randint(0, row-1)
-				# row2 = randint(row1, row-1)
-				# col1 = randint(0, column-1)
-				# col2 = randint(col1, column-1)
 
 				row1 = randint(0, row - 1)
 				if row1 + partitions > row - 1:
@@ -60,8 +55,8 @@ while True:
 					temp = col1 + partitions
 				col2 = randint(col1, temp)
 
-				if row1 == row2 and col1 == col2:
-					continue
+				# if row1 == row2 and col1 == col2:
+				# 	continue
 				new_slice = ((row1, col1), (row2, col2))
 				if (not check_overlap(slices, new_slice)) and check_slice_condition(pizza, configuration, new_slice):
 					update_filled_pizza(new_slice);
