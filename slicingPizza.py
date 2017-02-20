@@ -33,7 +33,6 @@ while True:
 	# reset large variables and increment random_limit
 	print("Finished iteration block. Incrementing random_limit. Current random_limit count: " + str(random_limit));
 	random_limit += random_limit_step
-	partitions = 8;
 	del slicing_methods[1:-1];
 
 	for partitions in range(partitions_init - partitions_delta, partitions_init + partitions_delta, partitions_step):
