@@ -4,8 +4,8 @@ from visualisation import plot_out_data
 import pprint
 
 input_file = "big.in"
-random_limit = 100000
-random_limit_step = 50000
+random_limit = 1000000
+random_limit_step = 100000
 partitions_init = 7
 partitions_step = 2
 partitions_delta = 1
