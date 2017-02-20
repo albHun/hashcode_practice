@@ -24,8 +24,8 @@ random_limit = 5000
 random_limit_step = 5000
 partitions = 7
 partitions_step = 1
-partitions_delta = 2
-iteration_limit = 10
+partitions_delta = 3
+iteration_limit = 5
 
 configuration, pizza = load_in_data(input_file)
 row = int(configuration["row"])
